@@ -61,7 +61,30 @@ function populateScreen() {
 
 function calculate(string) {
   const digits = string.split('');
-  console.log(digits);
+  let operator = '';
+  let x = '';
+  let y = '';
+  digits.forEach(digit => {
+    if (digit === '+' || digit === '-' || digit === '*' || digit === '/') {
+      if (operator) {
+        x = operate(Number(x), Number(y), operator);
+        operator = (operator !== digit) ? digit : operator;
+        y = '';
+      }
+      else {
+        operator = digit;
+      }
+    }
+    else {
+      if (operator) {
+        y += digit;
+      }
+      else {
+        x += digit;
+      }
+    }
+  });
+  console.log(operate(Number(x), Number(y), operator));
 }
 
 main();
