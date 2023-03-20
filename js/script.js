@@ -1,9 +1,9 @@
 function main() {
-  let x = 8;
+  let x = 0;
   let y = 0;
-  let operator = '/';
-  console.log(operate(x, y, operator));
-  return 0; 
+  let operator = '';
+  populateScreen();
+  return 0;
 }
 
 function sum(x, y) {
@@ -41,6 +41,27 @@ function operate(x, y, operator) {
       return 'Invalid operator';
   }
   return result;
+}
+
+function populateScreen() {
+  const numKeys = document.querySelectorAll('.key');
+  const screen = document.querySelector('#screen');
+  screen.textContent = '';
+  numKeys.forEach(key => {
+    key.addEventListener('click', e => {
+      keyValue = e.target.textContent;
+      if (keyValue === '=') {
+        calculate(screen.textContent);
+        return;
+      }
+      screen.textContent += e.target.textContent;
+    })
+  });
+}
+
+function calculate(string) {
+  const digits = string.split('');
+  console.log(digits);
 }
 
 main();
