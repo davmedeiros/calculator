@@ -54,7 +54,12 @@ function populateScreen() {
         calculate(screen.textContent);
         return;
       }
-      screen.textContent += e.target.textContent;
+      else if (keyValue === 'AC') {
+        screen.textContent = '';
+      }
+      else {
+        screen.textContent += e.target.textContent;
+      }
     })
   });
 }
