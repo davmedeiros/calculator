@@ -1,6 +1,6 @@
 function main() {
   let x = 8;
-  let y = 2;
+  let y = 0;
   let operator = '/';
   console.log(operate(x, y, operator));
   return 0; 
@@ -19,7 +19,7 @@ function multiply(x, y) {
 }
 
 function divide(x, y) {
-  return x / y;
+  return (![x, y].includes(0)) ? x / y : '-.-';
 }
 
 function operate(x, y, operator) {
