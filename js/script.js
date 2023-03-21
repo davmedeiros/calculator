@@ -76,12 +76,12 @@ function populateScreen() {
         console.log('num: ' + value);
         if (!operator) {
           x += e.target.textContent;
-          screen.textContent += x;
+          screen.textContent = x;
           console.log(x);
         }
         else {
           y += e.target.textContent;
-          screen.textContent += y;
+          screen.textContent += e.target.textContent;
           console.log(y);
         }
       }
