@@ -8,7 +8,7 @@
 
 #calculator-container {
   margin: 150px auto;
-  width: 305px;
+  width: 307px;
   border: 1px solid black;
   display: flex;
   flex-direction: column;
@@ -37,6 +37,7 @@
 
 #key-container {
   display: flex;
+  gap: 5px;
 }
 
 #numkey-container {
@@ -54,7 +55,15 @@
 #top-row-container {
   display: flex;
   gap: 5px;
-  justify-content: space-between;
+}
+
+#zerodot-container {
+  display: flex;
+  gap: 5px;
+}
+
+#zerodot-container button:first-child {
+  width: 145px;
 }
 
 .key {
