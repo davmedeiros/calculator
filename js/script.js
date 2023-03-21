@@ -72,6 +72,9 @@ function populateScreen() {
       else {
         if (!operator) {
           if (value === 'C') {
+            if (screen.textContent.charAt(length - 1) === operator) {
+              operator = '';
+            }
             x = x.slice(0, x.length - 1)
             screen.textContent = x;
             return;
@@ -84,6 +87,9 @@ function populateScreen() {
         }
         else {
           if (value === 'C') {
+            if (screen.textContent.charAt(length - 1) === operator) {
+              operator = '';
+            }
             const current = screen.textContent.slice(0, length - 1);
             y = y.slice(0, length - 1)
             screen.textContent = current;
