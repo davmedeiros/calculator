@@ -1,7 +1,4 @@
 function main() {
-  let x = 0;
-  let y = 0;
-  let operator = '';
   populateScreen();
   return 0;
 }
