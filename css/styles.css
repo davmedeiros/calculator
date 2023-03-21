@@ -12,8 +12,13 @@
   border: 1px solid black;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 5px;
   padding: 5px;
+  background-color: #1e1e2e;
+  border: 5px solid #313244;
+  border-radius: 16px;
 }
 
 #screen-container {
@@ -22,10 +27,12 @@
   display: flex;
   justify-content: end;
   align-items: center;
+  background-color: #313244;
+  color: #cdd6f4;
+  border-radius: 16px;
 }
 
 #screen {
-  border: 1px solid black;
   width: 100%;
   height: 100%;
   display: flex;
@@ -69,4 +76,11 @@
 .key {
   width: 70px;
   height: 70px;
+  background-color: #bac2de;
+  border: none;
+  border-radius: 16px;
+}
+
+.funckey {
+  background-color: #fab387;
 }
