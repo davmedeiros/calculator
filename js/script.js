@@ -55,11 +55,12 @@ function populateScreen() {
       let value = key.textContent;
       if (value === '+' || value === '-' || value === '*' || value === '/' || value === '=') {
         console.log('symbol: ' + value);
-        if (e.target.textContent === '=' || operator) {
+        if (value === '=' || operator) {
           x = operate(Number(x), Number(y), operator);
           screen.textContent = x;
           console.log(x);
           y = '';
+          operator = '';
         }
         if (value !== '=') {
           operator = e.target.textContent;
