@@ -81,6 +81,22 @@
   border-radius: 16px;
 }
 
+.numkey:active {
+  background-color: #9399b2;
+}
+
 .funckey {
+  background-color: #fab387;
+}
+
+.funckey:active {
+  background-color: #f9e2af;
+}
+
+.numkey:disabled {
+  background-color: #bac2de;
+}
+
+.funckey:disabled {
   background-color: #fab387;
 }
