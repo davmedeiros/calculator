@@ -40,7 +40,7 @@ function operate(x, y, operator) {
     default:
       return 'Invalid operator';
   }
-  return result;
+  return Math.round(result * 100) / 100;
 }
 
 function populateScreen() {
