@@ -44,52 +44,49 @@ function operate(x, y, operator) {
 }
 
 function populateScreen() {
-  const numKeys = document.querySelectorAll('.key');
   const screen = document.querySelector('#screen');
   screen.textContent = '';
-  numKeys.forEach(key => {
-    key.addEventListener('click', e => {
-      keyValue = e.target.textContent;
-      if (keyValue === '=') {
-        calculate(screen.textContent);
-        return;
-      }
-      else if (keyValue === 'AC') {
-        screen.textContent = '';
-      }
-      else {
-        screen.textContent += e.target.textContent;
-      }
-    })
-  });
-}
-
-function calculate(string) {
-  const digits = string.split('');
-  let operator = '';
+  const keys = document.querySelectorAll('.key');
   let x = '';
   let y = '';
-  digits.forEach(digit => {
-    if (digit === '+' || digit === '-' || digit === '*' || digit === '/') {
-      if (operator) {
-        x = operate(Number(x), Number(y), operator);
-        operator = (operator !== digit) ? digit : operator;
+  let operator = '';
+  keys.forEach(key => {
+    key.addEventListener('click', (e) => {
+      let value = key.textContent;
+      if (value === '+' || value === '-' || value === '*' || value === '/' || value === '=') {
+        console.log('symbol: ' + value);
+        if (e.target.textContent === '=' || operator) {
+          x = operate(Number(x), Number(y), operator);
+          screen.textContent = x;
+          console.log(x);
+          y = '';
+        }
+        if (value !== '=') {
+          operator = e.target.textContent;
+          screen.textContent += operator;
+        }
+      }
+      else if (value === 'AC') {
+        screen.textContent = '';
+        x = '';
         y = '';
+        operator = '';
       }
       else {
-        operator = digit;
+        console.log('num: ' + value);
+        if (!operator) {
+          x += e.target.textContent;
+          screen.textContent += x;
+          console.log(x);
+        }
+        else {
+          y += e.target.textContent;
+          screen.textContent += y;
+          console.log(y);
+        }
       }
-    }
-    else {
-      if (operator) {
-        y += digit;
-      }
-      else {
-        x += digit;
-      }
-    }
+    });
   });
-  console.log(operate(Number(x), Number(y), operator));
 }
 
 main();
