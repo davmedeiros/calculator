@@ -54,11 +54,9 @@ function populateScreen() {
     key.addEventListener('click', (e) => {
       let value = key.textContent;
       if (value === '+' || value === '-' || value === '*' || value === '/' || value === '=') {
-        console.log('symbol: ' + value);
         if (value === '=' || operator) {
           x = operate(Number(x), Number(y), operator);
           screen.textContent = x;
-          console.log(x);
           y = '';
           operator = '';
         }
@@ -74,16 +72,13 @@ function populateScreen() {
         operator = '';
       }
       else {
-        console.log('num: ' + value);
         if (!operator) {
           x += e.target.textContent;
           screen.textContent = x;
-          console.log(x);
         }
         else {
           y += e.target.textContent;
           screen.textContent += e.target.textContent;
-          console.log(y);
         }
       }
     });
