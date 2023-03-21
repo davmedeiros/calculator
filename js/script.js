@@ -35,7 +35,7 @@ function operate(x, y, operator) {
       result = divide(x, y);
       break;
     default:
-      return 'Invalid operator';
+      return 'Invalid';
   }
   return Math.round(result * 100) / 100;
 }
@@ -67,13 +67,20 @@ function populateScreen() {
         x = '';
         y = '';
         operator = '';
+        hasDot = false;
       }
       else {
         if (!operator) {
+          if (e.target.textContent === '.' && x.includes('.')) {
+            return;
+          }
           x += e.target.textContent;
           screen.textContent = x;
         }
         else {
+          if (e.target.textContent === '.' && y.includes('.')) {
+            return;
+          }
           y += e.target.textContent;
           screen.textContent += e.target.textContent;
         }
