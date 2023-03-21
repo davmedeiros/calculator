@@ -71,6 +71,11 @@ function populateScreen() {
       }
       else {
         if (!operator) {
+          if (value === 'C') {
+            x = x.slice(0, x.length - 1)
+            screen.textContent = x;
+            return;
+          }
           if (e.target.textContent === '.' && x.includes('.')) {
             return;
           }
@@ -78,6 +83,12 @@ function populateScreen() {
           screen.textContent = x;
         }
         else {
+          if (value === 'C') {
+            const current = screen.textContent.slice(0, length - 1);
+            y = y.slice(0, length - 1)
+            screen.textContent = current;
+            return;
+          }
           if (e.target.textContent === '.' && y.includes('.')) {
             return;
           }
