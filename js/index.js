@@ -41,13 +41,17 @@ function operate(operator, number1, number2) {
     return result;
 }
 
-(() => {
-    const numKeys = document.querySelectorAll('#keypad button');
+function addBehavior() {
+    const numericKeys = document.querySelectorAll('#keypad button.number');
     const screen = document.querySelector('#screen p');
+    let displayValue = '';
 
-    keys.forEach(key => {
+    numericKeys.forEach(key => {
         key.addEventListener('click', (e) => {
-            screen.textContent = ;
+            displayValue += e.target.value;
+            screen.textContent = displayValue;
         })
     });
-})();
+}
+
+addBehavior();
