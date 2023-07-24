@@ -40,3 +40,14 @@ function operate(operator, number1, number2) {
 
     return result;
 }
+
+(() => {
+    const numKeys = document.querySelectorAll('#keypad button');
+    const screen = document.querySelector('#screen p');
+
+    keys.forEach(key => {
+        key.addEventListener('click', (e) => {
+            screen.textContent = ;
+        })
+    });
+})();
