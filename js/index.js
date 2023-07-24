@@ -34,7 +34,7 @@ function operate(operator, number1, number2) {
             result = divide(number1, number2);
             break;
         default:
-            result = 'Invalid operator'
+            result = 'Invalid operator';
             break;
     }
 
