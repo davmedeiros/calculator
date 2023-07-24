@@ -1,18 +1,18 @@
-function sum(x, y) {
-    return x + y;
+function sum(number1, number2) {
+    return number1 + number2;
 }
 
-function subtract(x, y) {
-    return x - y;
+function subtract(number1, number2) {
+    return number1 - number2;
 }
 
-function multiply(x, y) {
-    return x * y;
+function multiply(number1, number2) {
+    return number1 * number2;
 }
 
-function divide(x, y) {
-    if (y === 0) {
+function divide(number1, number2) {
+    if (number2 === 0) {
         return 'You maybe on to something'
     }
-    return x / y;
+    return number1 / number2;
 }
