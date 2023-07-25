@@ -43,8 +43,10 @@ function operate(operator, number1, number2) {
 
 function addBehavior() {
     const numericKeys = document.querySelectorAll('#keypad button.number');
+    const operatorKeys = document.querySelectorAll('#keypad button.operator')
     const screen = document.querySelector('#screen p');
     let displayValue = '';
+    let bufferValue = '';
 
     numericKeys.forEach(key => {
         key.addEventListener('click', (e) => {
@@ -53,6 +55,15 @@ function addBehavior() {
             if (e.target.id === 'point') {
                 e.target.disabled = true;
             }
+        })
+    });
+
+    operatorKeys.forEach(key => {
+        key.addEventListener('click', (e) => {
+            bufferValue = displayValue;
+            displayValue = '';
+            screen.textContent = displayValue;
+            e.target.classList.add('selected');
         })
     });
 }
