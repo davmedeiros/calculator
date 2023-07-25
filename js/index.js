@@ -50,6 +50,9 @@ function addBehavior() {
         key.addEventListener('click', (e) => {
             displayValue += e.target.value;
             screen.textContent = displayValue;
+            if (e.target.id === 'point') {
+                e.target.disabled = true;
+            }
         })
     });
 }
