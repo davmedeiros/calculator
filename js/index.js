@@ -41,21 +41,29 @@ function operate(operator, number1, number2) {
     return result;
 }
 
-function addBehavior() {
+function userInterfaceController() {
     const numericKeys = document.querySelectorAll('#keypad button.number');
     const operatorKeys = document.querySelectorAll('#keypad button.operator')
     const equalsKey = document.querySelector('#equals');
+    const clearAllKey = document.querySelector('#clear-all');
+    const floatingPointKey = document.querySelector('#point');
     const screen = document.querySelector('#screen p');
     let displayValue = '';
     let bufferValue = '';
     let selectedOperator = '';
+
+    function reset() {
+        displayValue = '';
+        bufferValue = '';
+        floatingPointKey.disabled = false;
+    }
 
     numericKeys.forEach(key => {
         key.addEventListener('click', (e) => {
             displayValue += e.target.value;
             screen.textContent = displayValue;
             if (e.target.id === 'point') {
-                e.target.disabled = true;
+                floatingPointKey.disabled = true;
             }
         })
     });
@@ -67,15 +75,19 @@ function addBehavior() {
             screen.textContent = displayValue;
             e.target.classList.add('selected');
             selectedOperator = e.target.value;
+            floatingPointKey.disabled = false;
         })
     });
 
     equalsKey.addEventListener('click', () => {
         screen.textContent = operate(selectedOperator, bufferValue, displayValue);
-        displayValue = '';
-        bufferValue = '';
-    })
+        reset();
+    });
 
+    clearAllKey.addEventListener('click', () => {
+        reset();
+        screen.textContent = displayValue;
+    });
 }
 
-addBehavior();
+userInterfaceController();
