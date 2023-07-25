@@ -58,27 +58,38 @@ function userInterfaceController() {
         operatorKeys.forEach(key => {
             if (key.classList.contains('selected')) {
                 hasSelected = true;
-                key.classList.remove('selected');
             }
         });
 
         return hasSelected;
     }
 
+    function clearSelectedOperators() {
+        operatorKeys.forEach(key => {
+            if (key.classList.contains('selected')) {
+                key.classList.remove('selected');
+            }
+        });
+    }
+
     function reset() {
         displayValue = '';
         bufferValue = '';
         floatingPointKey.disabled = false;
-        isAnyOperatorSelected();
+        clearSelectedOperators();
     }
 
     function showResult() {
-        screen.textContent = operate(selectedOperator, bufferValue, displayValue);
-        reset();
+        displayValue = operate(selectedOperator, bufferValue, displayValue);
+        screen.textContent = displayValue;
     }
 
     numericKeys.forEach(key => {
         key.addEventListener('click', (e) => {
+            if (isAnyOperatorSelected() && displayValue) {
+                bufferValue = displayValue;
+                displayValue = '';
+            }
             displayValue += e.target.value;
             screen.textContent = displayValue;
             if (e.target.id === 'point') {
@@ -89,16 +100,18 @@ function userInterfaceController() {
 
     operatorKeys.forEach(key => {
         key.addEventListener('click', (e) => {
-            selectedOperator = e.target.value;
 
-            if (isAnyOperatorSelected()) {
+            if (isAnyOperatorSelected() && bufferValue) {
+                clearSelectedOperators();
                 showResult();
+                bufferValue = '';
             } else {
                 bufferValue = displayValue;
                 displayValue = '';
                 screen.textContent = displayValue;
             }
 
+            selectedOperator = e.target.value;
             e.target.classList.add('selected');
             floatingPointKey.disabled = false;
         })
