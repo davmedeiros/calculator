@@ -118,6 +118,8 @@ function userInterfaceController() {
     });
 
     equalsKey.addEventListener('click', () => {
+        // TODO: The current implementation leaves the app in a funky state.
+        // Some form of soft reset while keeping some values needs to be done here.
         showResult();
     });
 
