@@ -44,9 +44,11 @@ function operate(operator, number1, number2) {
 function addBehavior() {
     const numericKeys = document.querySelectorAll('#keypad button.number');
     const operatorKeys = document.querySelectorAll('#keypad button.operator')
+    const equalsKey = document.querySelector('#equals');
     const screen = document.querySelector('#screen p');
     let displayValue = '';
     let bufferValue = '';
+    let selectedOperator = '';
 
     numericKeys.forEach(key => {
         key.addEventListener('click', (e) => {
@@ -64,8 +66,16 @@ function addBehavior() {
             displayValue = '';
             screen.textContent = displayValue;
             e.target.classList.add('selected');
+            selectedOperator = e.target.value;
         })
     });
+
+    equalsKey.addEventListener('click', () => {
+        screen.textContent = operate(selectedOperator, bufferValue, displayValue);
+        displayValue = '';
+        bufferValue = '';
+    })
+
 }
 
 addBehavior();
