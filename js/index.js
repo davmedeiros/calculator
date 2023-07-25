@@ -52,10 +52,17 @@ function userInterfaceController() {
     let bufferValue = '';
     let selectedOperator = '';
 
+    function clearSelectedOperators() {
+        operatorKeys.forEach(key => {
+            key.classList.remove('selected');
+        });
+    }
+
     function reset() {
         displayValue = '';
         bufferValue = '';
         floatingPointKey.disabled = false;
+        clearSelectedOperators();
     }
 
     numericKeys.forEach(key => {
@@ -73,6 +80,7 @@ function userInterfaceController() {
             bufferValue = displayValue;
             displayValue = '';
             screen.textContent = displayValue;
+            clearSelectedOperators();
             e.target.classList.add('selected');
             selectedOperator = e.target.value;
             floatingPointKey.disabled = false;
