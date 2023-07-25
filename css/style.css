@@ -13,3 +13,29 @@
     --base-color: #FFE17B;
     --accent-color: #C51605;
 }
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main {
+    background-color: var(--base-color);
+    height: 640px;
+    width: 420px;
+    border-radius: 32px;
+    padding: 20px;
+}
+
+#screen {
+    background-color: var(--main-color);
+    border-radius: 32px 32px 10px 10px;
+    height: 150px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 20px;
+    font-size: 3rem;
+}
