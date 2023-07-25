@@ -52,17 +52,29 @@ function userInterfaceController() {
     let bufferValue = '';
     let selectedOperator = '';
 
-    function clearSelectedOperators() {
+    function isAnyOperatorSelected() {
+        let hasSelected = false;
+
         operatorKeys.forEach(key => {
-            key.classList.remove('selected');
+            if (key.classList.contains('selected')) {
+                hasSelected = true;
+                key.classList.remove('selected');
+            }
         });
+
+        return hasSelected;
     }
 
     function reset() {
         displayValue = '';
         bufferValue = '';
         floatingPointKey.disabled = false;
-        clearSelectedOperators();
+        isAnyOperatorSelected();
+    }
+
+    function showResult() {
+        screen.textContent = operate(selectedOperator, bufferValue, displayValue);
+        reset();
     }
 
     numericKeys.forEach(key => {
@@ -77,19 +89,23 @@ function userInterfaceController() {
 
     operatorKeys.forEach(key => {
         key.addEventListener('click', (e) => {
-            bufferValue = displayValue;
-            displayValue = '';
-            screen.textContent = displayValue;
-            clearSelectedOperators();
-            e.target.classList.add('selected');
             selectedOperator = e.target.value;
+
+            if (isAnyOperatorSelected()) {
+                showResult();
+            } else {
+                bufferValue = displayValue;
+                displayValue = '';
+                screen.textContent = displayValue;
+            }
+
+            e.target.classList.add('selected');
             floatingPointKey.disabled = false;
         })
     });
 
     equalsKey.addEventListener('click', () => {
-        screen.textContent = operate(selectedOperator, bufferValue, displayValue);
-        reset();
+        showResult();
     });
 
     clearAllKey.addEventListener('click', () => {
