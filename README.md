@@ -1,2 +1,1 @@
-# calculator
-TOP - Calculator
+# TOP - Educational Project - Calculator
